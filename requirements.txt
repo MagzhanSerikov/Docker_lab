@@ -1,0 +1,9 @@
+asgiref>=3.3.2
+Django>=3.2,<4.0
+pytz==2020.5
+sqlparse==0.4.4
+social-auth-app-django>=0.4.0
+openai>=1.43.0
+gunicorn
+dj-database-url
+psycopg2-binary

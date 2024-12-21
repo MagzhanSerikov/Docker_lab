@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: pollme_app
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - static_volume:/app/static
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgres://user:password@db:5432/dbname
+    depends_on:
+      - db
+    networks:
+      - backend
+  db:
+    image: postgres:14-alpine
+    container_name: pollme_db
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: dbname
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - backend
+networks:
+  backend:
+    driver: bridge
+    
+volumes:
+  static_volume:
+  db_data:
+
