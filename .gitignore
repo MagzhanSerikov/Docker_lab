@@ -1,0 +1,10 @@
+#Django
+*.рус
+＿pycache＿/
+db.sqlite3
+# Environment variables
+.env
+# Static files
+/static/
+# Media files
+/media/
